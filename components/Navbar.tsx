@@ -45,7 +45,7 @@ export default function Navbar() {
         {
         session ? 
           <Link
-            href="/post-updates"
+            href="/post-update"
             className="text-lg hover:text-sky-700 transition-all duration-300"
           >
             Post
