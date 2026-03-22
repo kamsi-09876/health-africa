@@ -5,11 +5,12 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProviderOptions from "@/components/providerOptions";
+import { Favicon } from "@/components/Favicon"; // React icon favicon
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "400", "500", "600", "700", "800", "900"]
-})
+  weight: ["100","200","300","400","500","600","700","800","900"],
+});
 
 export const metadata: Metadata = {
   title: "Health Africa | Solutions for Better Living",
@@ -23,13 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.className} antialiased`}
-      >
+      <head>
+        <Favicon /> {/* React icon favicon injected here */}
+      </head>
+      <body className={`${poppins.className} antialiased`}>
         <ProviderOptions>
-          <Navbar/>
+          <Navbar />
           {children}
-          <Footer/>
+          <Footer />
         </ProviderOptions>
       </body>
     </html>
