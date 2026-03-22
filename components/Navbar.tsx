@@ -83,52 +83,51 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-white z-40 lg:hidden transform transition-transform duration-300 ${
-          navOpen ? "translate-x-0 flex" : "translate-x-full hidden"
-        } flex-col pt-24 items-center gap-10`}
-      >
-        {navItems.map((item, i) => (
-          <Link
-            key={i}
-            href={item.url}
-            onClick={() => setNavOpen(false)}
-            className="text-xl hover:text-sky-700 transition-all duration-300"
-          >
-            {item.text}
-          </Link>
-        ))}
+  className={`fixed inset-0 bg-white z-40 lg:hidden transform transition-transform duration-300 ${
+    navOpen ? "translate-x-0 flex" : "translate-x-full hidden"
+  } flex flex-col items-center justify-center gap-8 text-center px-6`}
+>
+  {navItems.map((item, i) => (
+    <Link
+      key={i}
+      href={item.url}
+      onClick={() => setNavOpen(false)}
+      className="text-2xl font-semibold hover:text-sky-700 transition-all duration-300"
+    >
+      {item.text}
+    </Link>
+  ))}
 
-        {session && (
-          <Link
-            href="/post-updates"
-            onClick={() => setNavOpen(false)}
-            className="text-xl hover:text-sky-700 transition-all duration-300"
-          >
-            Post
-          </Link>
-        )}
+  {session && (
+    <Link
+      href="/post-updates"
+      onClick={() => setNavOpen(false)}
+      className="text-2xl font-semibold hover:text-sky-700 transition-all duration-300"
+    >
+      Post
+    </Link>
+  )}
 
-        {session ? (
-          <Link href="/profile" onClick={() => setNavOpen(false)}>
-            <Image
-              alt={session.user?.name ?? "user"}
-              src={session?.user?.image ?? "/user.png"}
-              width={200}
-              height={200}
-              className="w-16 h-16 rounded-full"
-            />
-          </Link>
-        ) : (
-          <Link
-            href="/auth/signin"
-            onClick={() => setNavOpen(false)}
-            className="bg-sky-600 text-white text-lg px-10 py-3 rounded-full flex items-center gap-2"
-          >
-            Sign In
-            <FiUser />
-          </Link>
-        )}
-      </div>
+  {session ? (
+    <Link href="/profile" onClick={() => setNavOpen(false)}>
+      <Image
+        alt={session.user?.name ?? "user"}
+        src={session?.user?.image ?? "/user.png"}
+        width={200}
+        height={200}
+        className="w-16 h-16 rounded-full mx-auto"
+      />
+    </Link>
+  ) : (
+    <Link
+      href="/auth/signin"
+      onClick={() => setNavOpen(false)}
+      className="bg-sky-600 text-white text-lg px-10 py-3 rounded-full flex items-center gap-2"
+    >
+      Sign In
+    </Link>
+  )}
+</div>
     </main>
   );
 }
