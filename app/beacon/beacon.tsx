@@ -26,7 +26,7 @@ interface ViewProps {
   session?: any;
 }
 
-  const Beacon = ({ session }: ViewProps) => {
+const Beacon = ({ session }: ViewProps) => {
   const [posts, setPosts] = useState<HealthPost[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -34,7 +34,6 @@ interface ViewProps {
 
   const fetchHealthPosts = async () => {
     const dbArray: HealthPost[] = [];
-
     try {
       const querySnapshot = await getDocs(collection(db, "diseaseReports"));
       querySnapshot.forEach((doc) => {
@@ -56,7 +55,7 @@ interface ViewProps {
   const deletePost = async (id: string) => {
     try {
       await deleteDoc(doc(db, "diseaseReports", id));
-      setPosts(posts.filter((post) => post.id !== id)); // update UI immediately
+      setPosts(posts.filter((post) => post.id !== id));
     } catch (error) {
       console.error("Error deleting:", error);
       alert("Something went wrong!");
@@ -68,93 +67,90 @@ interface ViewProps {
   }, []);
 
   return (
-    <main className="min-h-dvh md:p-5 p-3">
-      <h1 className="text-center my-10 font-semibold text-2xl text-gray-800">
+    <main className="min-h-screen bg-green-50 md:p-8 p-4">
+      <h1 className="text-center my-10 font-extrabold text-3xl text-green-700">
         Health Africa Beacon — Community Health Insights
       </h1>
 
       {loading ? (
-        <div className="h-[70vh] flex items-center justify-center gap-2">
-          <FiLoader className="animate-spin text-2xl" />
-          <p className="text-gray-600 text-sm">Loading...</p>
+        <div className="h-[70vh] flex flex-col items-center justify-center gap-4">
+          <div className="w-16 h-16 border-4 border-green-600 border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-green-700 text-lg font-medium">Loading community reports...</p>
         </div>
+      ) : posts.length === 0 ? (
+        <p className="text-center text-gray-600 text-lg mt-10">
+          No health reports available yet.
+        </p>
       ) : (
-        <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {posts.map((post, i) => (
-            <div key={i} className="shadow-sm p-3 rounded-xl">
-              <h1 className="text-center text-2xl font-bold text-gray-800">
+        <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.map((post) => (
+            <div key={post.id} className="bg-white shadow-lg rounded-xl p-5 flex flex-col justify-between hover:shadow-2xl transition-shadow duration-300">
+              {/* Title */}
+              <h2 className="text-center text-2xl font-bold text-green-700 mb-4">
                 {post.diseaseName}
-              </h1>
+              </h2>
 
-              <div className="flex flex-col gap-3 mt-3">
-                {/* Author & timestamp */}
-                <div className="flex items-center justify-between">
-                  <article className="flex items-center gap-2">
-                    <img
-                      src={post.userImage}
-                      alt={post.userName}
-                      className="w-10 h-10 rounded-full"
-                    />
-                    <p>{post.userName}</p>
-                  </article>
-                  <p className="text-sm text-gray-500">{post.timestamp}</p>
+              {/* Author & timestamp */}
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <img
+                    src={post.userImage ?? "/user.png"}
+                    alt={post.userName}
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                  <p className="font-medium text-gray-700">{post.userName}</p>
                 </div>
+                <p className="text-sm text-gray-500">{post.timestamp}</p>
+              </div>
 
-                {/* Cause */}
+              {/* Post Details */}
+              <div className="flex flex-col gap-2">
                 <div>
-                  <span className="text-sm text-gray-700 flex items-center gap-2">
+                  <span className="text-sm text-green-700 flex items-center gap-2 font-semibold">
                     <FaUserMd /> Cause
                   </span>
-                  <p className="text-lg font-light line-clamp-2">{post.cause}</p>
+                  <p className="text-gray-600 line-clamp-3">{post.cause}</p>
                 </div>
 
-                {/* Symptoms */}
                 <div>
-                  <span className="text-sm text-gray-700 flex items-center gap-2">
+                  <span className="text-sm text-green-700 flex items-center gap-2 font-semibold">
                     <CiCircleCheck /> Symptoms
                   </span>
-                  <p className="text-lg font-light line-clamp-2">{post.symtoms}</p>
+                  <p className="text-gray-600 line-clamp-3">{post.symtoms}</p>
                 </div>
 
-                {/* Recommended Hospital */}
                 <div>
-                  <span className="text-sm text-gray-700 flex items-center gap-2">
+                  <span className="text-sm text-green-700 flex items-center gap-2 font-semibold">
                     <FaUserMd /> Recommended Hospital
                   </span>
-                  <p className="text-lg font-light line-clamp-2">
-                    {post.recommendedHospital}
-                  </p>
+                  <p className="text-gray-600 line-clamp-2">{post.recommendedHospital}</p>
                 </div>
 
-                {/* Preventive Measures */}
                 <div>
-                  <span className="text-sm text-gray-700 flex items-center gap-2">
+                  <span className="text-sm text-green-700 flex items-center gap-2 font-semibold">
                     <CiCircleCheck /> Preventive Measures
                   </span>
-                  <p className="text-lg font-light line-clamp-2">
-                    {post.preventiveMeasures}
-                  </p>
+                  <p className="text-gray-600 line-clamp-2">{post.preventiveMeasures}</p>
                 </div>
+              </div>
 
-                {/* Actions */}
-                <div className="flex items-center justify-between">
-                  <Link
-                    href={`/beacon/${post.id}`}
-                    className="flex items-center gap-1 hover:text-green-600"
+              {/* Actions */}
+              <div className="flex items-center justify-between mt-4">
+                <Link
+                  href={`/beacon/${post.id}`}
+                  className="flex items-center gap-1 text-green-700 font-semibold hover:text-green-800 transition-colors duration-300"
+                >
+                  View Details <MdKeyboardDoubleArrowRight className="text-lg" />
+                </Link>
+
+                {uid === post.userId && (
+                  <button
+                    onClick={() => deletePost(post.id)}
+                    className="text-red-500 hover:bg-red-500 hover:text-white p-2 rounded-full transition-colors duration-200"
                   >
-                    View Details
-                    <MdKeyboardDoubleArrowRight className="text-lg" />
-                  </Link>
-
-                  {uid === post.userId && (
-                    <button
-                      onClick={() => deletePost(post.id)}
-                      className="text-lg hover:bg-red-500 p-2 rounded-full hover:text-white transition-all duration-200"
-                    >
-                      <CiTrash />
-                    </button>
-                  )}
-                </div>
+                    <CiTrash />
+                  </button>
+                )}
               </div>
             </div>
           ))}

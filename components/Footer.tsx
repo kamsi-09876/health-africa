@@ -25,7 +25,7 @@ export default function Footer() {
             href="/#footer"
             className="hover:text-green-200 transition-colors duration-300"
           >
-            Contact Us
+            Connect to Us
           </Link>
           <Link
             href="/"
