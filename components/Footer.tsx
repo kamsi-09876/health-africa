@@ -9,9 +9,9 @@ import { FaFacebook } from "react-icons/fa";
 
 export default function Footer (){
   return (
-    <main className="bg-black">
+    <main className="bg-green-700">
       {/* Header / Logo */}
-      <section className="bg-white/10 flex justify-start items-center py-6 px-6 md:px-10">
+      <section className=" flex justify-start items-center py-6 px-6 md:px-10">
         <Link href={"/"} className="flex items-center gap-2">
           <SiWorldhealthorganization className="w-8 h-8 text-green-600" />
           <p className="font-semibold text-xl text-green-600 max-md:hidden">
