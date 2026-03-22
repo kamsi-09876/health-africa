@@ -64,7 +64,7 @@ export default function Navbar() {
           </Link>
         ) : (
           <Link
-            className="bg-sky-600 text-white text-lg px-5 py-2 rounded-full flex items-center gap-2"
+            className="bg-green-600 text-white text-lg px-5 py-2 rounded-full flex items-center gap-2"
             href="/auth/signin"
           >
             Sign In
