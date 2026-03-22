@@ -1,22 +1,3 @@
-// import { auth } from "@/auth"; // or wherever your auth is
-
-// export default async function RootLayout({
-//   children,
-// }: {
-//   children: React.ReactNode;
-// }) {
-//   const session = await auth(); // ✅ fetch session
-
-//   return (
-//     <html lang="en">
-//       <body className={`${poppins.className} antialiased`}>
-//         <Navbar session={session} /> {/* ✅ pass it */}
-//         {children}
-//         <Footer />
-//       </body>
-//     </html>
-//   );
-// }
 
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
@@ -31,8 +12,8 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: "Innovate-X | Solutions for Africa",
-  description: "Sharing ideas for a modern Africa",
+  title: "Health Africa | Solutions for Better Living",
+  description: "Sharing ideas and innovations to improve healthcare across Africa",
 };
 
 export default function RootLayout({

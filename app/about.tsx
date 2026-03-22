@@ -1,8 +1,31 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function AboutUs() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500); // simulate loading delay
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Loader UI
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-green-50">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-green-600 border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-green-700 font-semibold">Loading Health Africa...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-green-50 py-16 px-6 md:px-12">
       <section className="max-w-6xl mx-auto flex flex-col gap-16">
@@ -21,7 +44,7 @@ export default function AboutUs() {
           </div>
           <div className="md:w-1/2">
             <Image
-              src="/about-hero.png" // Use a professional health/community illustration
+              src="/about-hero.png"
               alt="Health Africa Community"
               width={600}
               height={400}
@@ -56,7 +79,7 @@ export default function AboutUs() {
         <div className="flex flex-col md:flex-row items-center gap-10">
           <div className="md:w-1/2">
             <Image
-              src="/community-impact.png" // Illustration of community health or reports
+              src="/community-impact.png"
               alt="Community Health Impact"
               width={600}
               height={400}
