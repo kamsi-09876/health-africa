@@ -103,7 +103,7 @@ export default function AboutPage() {
             Be part of a growing health-conscious community. Share knowledge, report issues, and make a difference in your community.
           </p>
           <a
-            href="/signin"
+            href="/auth/signin"
             className="bg-green-700 hover:bg-green-800 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300"
           >
             Get Started
