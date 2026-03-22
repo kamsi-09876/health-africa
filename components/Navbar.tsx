@@ -50,7 +50,7 @@ export default function Navbar() {
           >
             Post
           </Link> : null
-        )}
+      }
 
         {session ? (
           <Link href="/profile">
