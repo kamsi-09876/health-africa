@@ -16,7 +16,7 @@ export default function Navbar() {
   const navItems = [
     { text: "Home", url: "/" },
     { text: "About Us", url: "/about" },
-    { text: "Contact Us", url: "/contact" },
+    { text: "Contact Us", url: "/#footer" },
     { text: "Beacon", url: "/beacon" },
   ];
 
