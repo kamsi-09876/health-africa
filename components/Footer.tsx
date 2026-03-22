@@ -6,39 +6,49 @@ import { FaInstagram } from "react-icons/fa6";
 import { CiTwitter } from "react-icons/ci";
 import { FaFacebook } from "react-icons/fa";
 
+
 export default function Footer (){
-
   return (
-    <main className="bg-black pt-1">
-        <section className=" bg-white/30 ">
-        <Link href={"/"} className="flex items-center z-50 gap-2 pt-10 pl-10">
-                <SiWorldhealthorganization 
-                    // using higher number for initial width nd height helps the images to be clearer before using a className to reduce it
-                    className="w-8 h-8 pt-1 text-blue-300"
-                />
-                <p className="font-semibold text-xl   text-blue-300 max-md:hidden">Health Africa</p>
-            </Link>
-
-           
-             <div className="flex flex-col items-center justify-center gap-6 py-6 bg-green-700">
-  {/* Links */}
-  <div className="flex flex-wrap justify-center items-center gap-5 text-sm text-green-100">
-    <Link href={"/"}>Chat with us</Link>
-    <Link href={"/"}>Privacy Policy</Link>
-    <Link href={"/"}>Terms of Use</Link>
-  </div>
-
-  {/* Social Icons */}
-  <div className="flex justify-center items-center gap-5 text-2xl text-white">
-    <FaYoutube />
-    <FaInstagram />
-    <CiTwitter />
-    <FaFacebook />
-  </div>
-</div>
+    <main className="bg-black">
+      {/* Header / Logo */}
+      <section className="bg-white/10 flex justify-start items-center py-6 px-6 md:px-10">
+        <Link href={"/"} className="flex items-center gap-2">
+          <SiWorldhealthorganization className="w-8 h-8 text-green-600" />
+          <p className="font-semibold text-xl text-green-600 max-md:hidden">
+            Health Africa
+          </p>
+        </Link>
       </section>
-    
-  </main>
-  )
+
+      {/* Footer */}
+      <section className="flex flex-col items-center justify-center gap-6 py-8 bg-green-700">
+        {/* Links */}
+        <div className="flex flex-wrap justify-center items-center gap-5 text-sm text-green-100">
+          <Link href={"/"} className="hover:text-green-200 transition-colors duration-300">
+            Chat with us
+          </Link>
+          <Link href={"/"} className="hover:text-green-200 transition-colors duration-300">
+            Privacy Policy
+          </Link>
+          <Link href={"/"} className="hover:text-green-200 transition-colors duration-300">
+            Terms of Use
+          </Link>
+        </div>
+
+        {/* Social Icons */}
+        <div className="flex justify-center items-center gap-6 text-2xl text-white">
+          <FaYoutube className="hover:text-red-500 transition-colors duration-300" />
+          <FaInstagram className="hover:text-pink-500 transition-colors duration-300" />
+          <CiTwitter className="hover:text-blue-400 transition-colors duration-300" />
+          <FaFacebook className="hover:text-blue-600 transition-colors duration-300" />
+        </div>
+
+        <p className="text-green-100 text-sm mt-4">
+          © {new Date().getFullYear()} Health Africa. All rights reserved.
+        </p>
+      </section>
+    </main>
+  );
+}
 
 }
