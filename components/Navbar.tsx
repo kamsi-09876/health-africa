@@ -112,7 +112,7 @@ export default function Navbar() {
     </Link>
   ) : (
     <Link
-      className="bg-green-700 hover:bg-green-800 text-white text-lg px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300"
+      className="bg-green-700 hover:bg-green-800 text-white text-lg px-6 py-3 rounded-full flex items-center gap-2"
       href={"/auth/signin"}
       onClick={() => setNavOpen(false)}
     >
