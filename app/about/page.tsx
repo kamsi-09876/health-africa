@@ -77,7 +77,7 @@ export default function AboutPage() {
         <div className="flex flex-col md:flex-row items-center gap-10">
           <div className="md:w-1/2">
             <Image
-              src="/community-impact.png"
+              src="/About.jpg"
               alt="Community Health Impact"
               width={600}
               height={400}
