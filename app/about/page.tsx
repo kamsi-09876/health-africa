@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function AboutUs() {
+export default function AboutPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,7 +14,6 @@ export default function AboutUs() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Loader UI
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-green-50">
@@ -29,7 +28,6 @@ export default function AboutUs() {
   return (
     <main className="min-h-screen bg-green-50 py-16 px-6 md:px-12">
       <section className="max-w-6xl mx-auto flex flex-col gap-16">
-        
         {/* Hero Section */}
         <div className="flex flex-col md:flex-row items-center gap-10">
           <div className="md:w-1/2">
@@ -111,7 +109,6 @@ export default function AboutUs() {
             Get Started
           </a>
         </div>
-
       </section>
     </main>
   );
