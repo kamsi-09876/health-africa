@@ -20,21 +20,22 @@ export default function Footer (){
             </Link>
 
            
-             <div className="text-sm flex max-md:flex-col max-md:gap-2 gap-5 text-blue-300">
-              <Link href={"/"}>Chat with us</Link>
-              <Link href={"/"}>Privacy Policy</Link>
-              <Link href={"/"}>Terms of Use</Link>
-            </div>
+             <div className="flex flex-col items-center justify-center gap-6 py-6 bg-green-700">
+  {/* Links */}
+  <div className="flex flex-wrap justify-center items-center gap-5 text-sm text-green-100">
+    <Link href={"/"}>Chat with us</Link>
+    <Link href={"/"}>Privacy Policy</Link>
+    <Link href={"/"}>Terms of Use</Link>
+  </div>
 
-
-            <div className="flex items-center text-2xl gap-5 text-white">
-             <FaYoutube />
-             <FaInstagram />
-             <CiTwitter />
-             <FaFacebook />
-            
-
-           </div>
+  {/* Social Icons */}
+  <div className="flex justify-center items-center gap-5 text-2xl text-white">
+    <FaYoutube />
+    <FaInstagram />
+    <CiTwitter />
+    <FaFacebook />
+  </div>
+</div>
       </section>
     
   </main>
