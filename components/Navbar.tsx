@@ -73,58 +73,51 @@ export default function Navbar() {
         )}
       </div>
 
-      {/* Mobile Toggle Button */}
-      <button
-        onClick={() => setNavOpen(!navOpen)}
-        className="text-2xl lg:hidden z-50 relative"
-      >
-        {navOpen ? <MdClose /> : <CiMenuBurger />}
-      </button>
-
-      {/* Mobile Menu */}
-      <div
-  className={`fixed inset-0 bg-white z-40 lg:hidden transform transition-transform duration-300 ${
-    navOpen ? "translate-x-0 flex" : "translate-x-full hidden"
-  } flex flex-col items-center justify-center gap-8 text-center px-6`}
+     {/* mobile and tab view */}
+<div
+  className={`fixed inset-0 bg-green-50 z-40 w-full lg:hidden ${
+    navOpen ? "flex" : "hidden"
+  } flex-col items-center justify-center gap-8 text-center px-6`}
 >
   {navItems.map((item, i) => (
     <Link
+      onClick={() => setNavOpen(false)}
       key={i}
       href={item.url}
-      onClick={() => setNavOpen(false)}
-      className="text-2xl font-semibold hover:text-sky-700 transition-all duration-300"
+      className="text-2xl font-semibold text-green-800 hover:text-green-600 transition-all duration-300"
     >
       {item.text}
     </Link>
   ))}
 
-  {session && (
+  {session ? (
     <Link
-      href="/post-updates"
+      href={"/post-innovation"}
       onClick={() => setNavOpen(false)}
-      className="text-2xl font-semibold hover:text-sky-700 transition-all duration-300"
+      className="text-2xl font-semibold text-green-800 hover:text-green-600 transition-all duration-300"
     >
       Post
     </Link>
-  )}
+  ) : null}
 
   {session ? (
-    <Link href="/profile" onClick={() => setNavOpen(false)}>
+    <Link href={"/profile"} onClick={() => setNavOpen(false)}>
       <Image
-        alt={session.user?.name ?? "user"}
+        alt={session.user?.name?.slice(0, 2).toUpperCase() ?? "user"}
         src={session?.user?.image ?? "/user.png"}
         width={200}
         height={200}
-        className="w-16 h-16 rounded-full mx-auto"
+        className="w-14 h-14 rounded-full mx-auto border-2 border-green-600"
       />
     </Link>
   ) : (
     <Link
-      href="/auth/signin"
+      className="bg-green-700 hover:bg-green-800 text-white text-lg px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300"
+      href={"/auth/signin"}
       onClick={() => setNavOpen(false)}
-      className="bg-sky-600 text-white text-lg px-10 py-3 rounded-full flex items-center gap-2"
     >
       Sign In
+      <FiUser />
     </Link>
   )}
 </div>
