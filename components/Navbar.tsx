@@ -1,13 +1,13 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { CiMenuBurger } from "react-icons/ci";
+import { CiMenuBurger, CiMenuFries } from "react-icons/ci";
 import { MdClose } from "react-icons/md";
 import { useSession } from "next-auth/react";
 import { SiWorldhealthorganization } from "react-icons/si";
 import { FiUser } from "react-icons/fi";
+import { IoMdClose } from "react-icons/io";
 
 export default function Navbar() {
   const [navOpen, setNavOpen] = useState(false);
@@ -21,7 +21,7 @@ export default function Navbar() {
   ];
 
   return (
-    <main className="relative z-50 shadow-md px-10 py-3 flex items-center justify-between bg-white">
+    <main className="z-50 shadow-md px-10 py-3 flex items-center justify-between sticky top-0 bg-white">
       
       {/* Logo */}
       <Link href="/" className="flex items-center z-50 gap-2">
@@ -42,20 +42,20 @@ export default function Navbar() {
             {item.text}
           </Link>
         ))}
-
-        {session && (
+        {
+        session ? 
           <Link
             href="/post-updates"
             className="text-lg hover:text-sky-700 transition-all duration-300"
           >
             Post
-          </Link>
+          </Link> : null
         )}
 
         {session ? (
           <Link href="/profile">
             <Image
-              alt={session.user?.name ?? "user"}
+              alt={session.user?.name?.slice(0,2).toLocaleUpperCase() ?? "user"}
               src={session?.user?.image ?? "/user.png"}
               width={200}
               height={200}
@@ -73,11 +73,14 @@ export default function Navbar() {
         )}
       </div>
 
+      <button onClick={() => setNavOpen(!navOpen)} className="text-xl lg:hidden z-50">
+        {navOpen ?<IoMdClose/>:<CiMenuFries/>}
+      </button>
+
      {/* mobile and tab view */}
 <div
-  className={`fixed inset-0 bg-green-50 z-40 w-full lg:hidden ${
-    navOpen ? "flex" : "hidden"
-  } flex-col items-center justify-center gap-8 text-center px-6`}
+  className={`min-h-dvh bg-white w-full absolute top-0 right-0 lg:hidden ${navOpen ? "flex" : "hidden"
+  } flex-col pt-20 items-center gap-10`}
 >
   {navItems.map((item, i) => (
     <Link
@@ -92,7 +95,7 @@ export default function Navbar() {
 
   {session ? (
     <Link
-      href={"/post-innovation"}
+      href={"/post-update"}
       onClick={() => setNavOpen(false)}
       className="text-2xl font-semibold text-green-800 hover:text-green-600 transition-all duration-300"
     >
