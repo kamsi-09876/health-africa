@@ -42,7 +42,7 @@ export default function AboutPage() {
           </div>
           <div className="md:w-1/2">
             <Image
-              src="/about-hero.png"
+              src="/About1.jpg"
               alt="Health Africa Community"
               width={600}
               height={400}
