@@ -19,20 +19,20 @@ export default function Footer (){
                 <p className="font-semibold text-xl   text-blue-300 max-md:hidden">Health Africa</p>
             </Link>
 
-           <div className="flex items-center justify-between p-10 ">
-             <div className="flex gap-10 text-blue-300">
+           
+             <div className="text-sm flex max-md:flex-col max-md:gap-2 gap-5 text-blue-300">
               <Link href={"/"}>Chat with us</Link>
               <Link href={"/"}>Privacy Policy</Link>
               <Link href={"/"}>Terms of Use</Link>
             </div>
 
 
-            <div className="flex text-2xl gap-8 text-white">
+            <div className="flex items-center text-2xl gap-5 text-white">
              <FaYoutube />
              <FaInstagram />
              <CiTwitter />
              <FaFacebook />
-            </div>
+            
 
            </div>
       </section>
