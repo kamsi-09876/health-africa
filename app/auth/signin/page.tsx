@@ -40,7 +40,7 @@ export default async function SignIn() {
             <span className="border-b border-gray-300 w-full"></span>
           </div>
 
-          {/* <form
+          <form
             action={async () => {
               "use server";
               await signIn("google");
@@ -53,7 +53,7 @@ export default async function SignIn() {
               <FcGoogle className="text-xl" />
               <p>Google</p>
             </button>
-          </form> */}
+          </form>
 
           <button className="border rounded-lg flex items-center justify-center gap-2 py-2 border-blue-300">
             <FaApple className="text-xl" />
