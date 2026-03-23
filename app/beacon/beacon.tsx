@@ -140,10 +140,11 @@ const Beacon = ({ session }: ViewProps) => {
                   href={`/beacon/${post.id}`}
                   className="flex items-center gap-1 text-green-700 font-semibold hover:text-green-800 transition-colors duration-300"
                 >
-                  View Details <MdKeyboardDoubleArrowRight className="text-lg" />
+                  View Details
+                  {""} <MdKeyboardDoubleArrowRight className="text-lg" />
                 </Link>
 
-                {uid === post.userId && (
+                {uid == post.userId && (
                   <button
                     onClick={() => deletePost(post.id)}
                     className="text-red-500 hover:bg-red-500 hover:text-white p-2 rounded-full transition-colors duration-200"
